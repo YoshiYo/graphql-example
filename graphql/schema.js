@@ -8,7 +8,10 @@ const typeDefs = `
         address: Address
         phone: String!
         website: String!
-        company: Company
+        company: Company!
+        post: [Post]
+        album: [Album]
+        todo: [Todo]
     }
 
     type Address {
@@ -37,8 +40,29 @@ const typeDefs = `
         body: String!
     }
 
+    type Album {
+        userId: ID!
+        id: ID!
+        title: String!
+        photo: [Photo]
+    }
+
+    type Photo {
+        albumId: ID!
+        id: ID!
+        title: String!
+        url: String!
+        thumbnailUrl: String!
+    }
+
+    type Todo {
+        userId: ID!
+        id: ID!
+        title: String!
+        completed: Boolean!
+    }
+
     type Query {
-        hello(name: String): String
         users(id: ID!): User
         posts(id: ID!): Post
     }
